@@ -1,0 +1,37 @@
+name: 问题反馈
+description: 制作失败、打不开、显示不对等问题
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: 感谢反馈！请尽量写清楚发生了什么，并附上日志，方便定位问题。请不要上传有版权的漫画图片。
+  - type: dropdown
+    id: os
+    attributes:
+      label: 系统
+      options:
+        - macOS（Apple 芯片）
+        - Windows 11
+        - Windows 10
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: MangaBox 版本
+      description: 在“设置 → 关于”里可以看到
+      placeholder: 例如 0.1.0
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: 发生了什么
+      description: 你做了哪些操作，看到了什么提示，原本期望是什么
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: 日志
+      description: macOS：~/Library/Logs/MangaBox.log；Windows：文档\MangaBox\client.log。可以直接把文件拖进来。

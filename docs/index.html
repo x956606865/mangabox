@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MangaBox 漫画成书</title>
+  <meta name="description" content="把漫画图片文件夹做成适合电子书阅读器的 EPUB / CBZ：自动拆页、裁掉白边、放大并居中。免费，支持 macOS 与 Windows。">
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  <meta property="og:title" content="MangaBox 漫画成书">
+  <meta property="og:description" content="把漫画图片做成电子书：自动拆页、裁掉白边、放大并居中。">
+  <meta property="og:image" content="assets/screenshots/04-confirm.png">
+  <style>
+    /* 与客户端一致：墨黑 + 纯白，樱红是唯一的强调色；跟随系统切换深色。 */
+    :root {
+      --bg: #fcfcfc; --fg: #1c1c1c; --muted: #6b6b6b; --line: #e6e6e6; --card: #ffffff;
+      --accent: #d23a63; --accent-soft: #fbeaf0; --shadow: 0 1px 2px rgba(0,0,0,.05), 0 12px 32px -12px rgba(0,0,0,.18);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #151515; --fg: #f2f2f2; --muted: #a3a3a3; --line: #2a2a2a; --card: #1f1f1f;
+              --accent: #e9668a; --accent-soft: #3a2029; --shadow: 0 1px 2px rgba(0,0,0,.4), 0 14px 36px -12px rgba(0,0,0,.7); }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--fg); line-height: 1.7;
+           font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", sans-serif; }
+    a { color: inherit; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+    header { position: sticky; top: 0; z-index: 10; backdrop-filter: saturate(1.4) blur(12px);
+             background: color-mix(in srgb, var(--bg) 82%, transparent); border-bottom: 1px solid var(--line); }
+    header .wrap { display: flex; align-items: center; gap: 24px; height: 60px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; text-decoration: none; }
+    .brand img { width: 30px; height: 30px; }
+    nav { display: flex; gap: 20px; margin-left: auto; font-size: 14px; }
+    nav a { text-decoration: none; color: var(--muted); }
+    nav a:hover { color: var(--fg); }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 12px; font-weight: 600;
+           text-decoration: none; border: 1px solid transparent; transition: transform .15s ease, box-shadow .15s ease; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn.primary { background: var(--accent); color: #fff; box-shadow: var(--shadow); }
+    .btn.ghost { border-color: var(--line); background: var(--card); }
+    .screentone { background-image: radial-gradient(color-mix(in srgb, var(--fg) 11%, transparent) 1.1px, transparent 1.4px);
+                  background-size: 12px 12px; -webkit-mask-image: radial-gradient(ellipse at center, #000 25%, transparent 72%);
+                  mask-image: radial-gradient(ellipse at center, #000 25%, transparent 72%); }
+    .hero { position: relative; padding: 72px 0 40px; text-align: center; overflow: hidden; }
+    .hero .screentone { position: absolute; inset: 0; z-index: -1; }
+    .hero img.logo { width: 112px; height: 112px; }
+    h1 { font-size: clamp(32px, 6vw, 52px); line-height: 1.2; margin: 18px 0 12px; letter-spacing: -.01em; }
+    .lead { font-size: clamp(16px, 2.4vw, 19px); color: var(--muted); max-width: 640px; margin: 0 auto; }
+    .cta { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+    .meta { margin-top: 14px; font-size: 13px; color: var(--muted); }
+    .shot { margin: 44px auto 0; max-width: 980px; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line); }
+    .shot img { display: block; width: 100%; height: auto; }
+    section { padding: 72px 0; }
+    h2 { font-size: clamp(24px, 4vw, 34px); margin: 0 0 10px; text-align: center; }
+    .sub { text-align: center; color: var(--muted); margin: 0 auto 40px; max-width: 620px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+    .card h3 { margin: 0 0 6px; font-size: 17px; }
+    .card p { margin: 0; color: var(--muted); font-size: 15px; }
+    .dot { display: inline-flex; width: 34px; height: 34px; border-radius: 10px; background: var(--accent-soft); color: var(--accent);
+           align-items: center; justify-content: center; font-weight: 700; margin-bottom: 12px; }
+    .steps { counter-reset: step; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+    .gallery figure { margin: 0; }
+    .gallery img { width: 100%; border-radius: 12px; border: 1px solid var(--line); box-shadow: var(--shadow); display: block; }
+    .gallery figcaption { margin-top: 8px; font-size: 14px; color: var(--muted); text-align: center; }
+    .downloads { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+    .downloads .card { display: flex; flex-direction: column; gap: 10px; }
+    .downloads .btn { align-self: flex-start; margin-top: 6px; }
+    .downloads ol { margin: 4px 0 0; padding-left: 20px; color: var(--muted); font-size: 14px; }
+    details { border-bottom: 1px solid var(--line); padding: 16px 4px; }
+    details summary { cursor: pointer; font-weight: 600; list-style: none; }
+    details summary::after { content: "+"; float: right; color: var(--muted); }
+    details[open] summary::after { content: "–"; }
+    details p { color: var(--muted); margin: 10px 0 0; }
+    footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted); font-size: 13px; }
+    footer a { color: var(--muted); }
+    .fade { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+    .fade.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .fade { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+    @media (max-width: 640px) { nav { display: none; } section { padding: 56px 0; } .hero { padding-top: 48px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a class="brand" href="#"><img src="assets/icon.png" alt="">MangaBox</a>
+      <nav>
+        <a href="#features">功能</a><a href="#screens">截图</a><a href="#download">下载</a><a href="#faq">常见问题</a>
+        <a href="https://github.com/x956606865/mangabox">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="screentone"></div>
+      <div class="wrap">
+        <img class="logo fade" src="assets/icon.png" alt="MangaBox 图标">
+        <h1 class="fade">把漫画图片做成电子书</h1>
+        <p class="lead fade">选一个装着漫画图片的文件夹，MangaBox 会自动拆页、裁掉白边、放大到阅读器的分辨率并居中，做成 EPUB / CBZ。免费，双击就能用。</p>
+        <div class="cta fade">
+          <a class="btn primary" id="main-download" href="https://github.com/x956606865/mangabox/releases/latest">下载 MangaBox</a>
+          <a class="btn ghost" href="#download">所有版本与安装说明</a>
+        </div>
+        <p class="meta" id="release-meta">macOS（Apple 芯片）· Windows 10 / 11</p>
+        <div class="shot fade"><img src="assets/screenshots/04-confirm.png" alt="MangaBox 确认书名与阅读器的界面"></div>
+      </div>
+    </div>
+
+    <section id="features">
+      <div class="wrap">
+        <h2 class="fade">在阅读器上舒服地看漫画</h2>
+        <p class="sub fade">从网上拿到的漫画图片往往是两页拼在一起的横图、留着大片白边、分辨率又不够。MangaBox 一步帮你处理好。</p>
+        <div class="grid">
+          <div class="card fade"><span class="dot">拆</span><h3>自动拆页</h3><p>两页拼在一起的横图自动拆开，按日漫习惯先右后左。</p></div>
+          <div class="card fade"><span class="dot">裁</span><h3>裁掉白边</h3><p>模型找出正文范围（包括出框的人物、对话框和拟声字），页码和水印不影响裁切。</p></div>
+          <div class="card fade"><span class="dot">放</span><h3>放大与居中</h3><p>放大到阅读器分辨率，全书统一大小，翻页不会忽大忽小。</p></div>
+          <div class="card fade"><span class="dot">查</span><h3>检查并修正</h3><p>模型不太确定的页排在前面，拖动红框调整，一键重新制作。</p></div>
+          <div class="card fade"><span class="dot">套</span><h3>整套制作</h3><p>按卷分好的多卷漫画，确认卷号后每卷做成一本，系列名和卷号写进电子书。</p></div>
+          <div class="card fade"><span class="dot">安</span><h3>只在你的电脑上</h3><p>原图不会被修改，也不会上传到网络。</p></div>
+        </div>
+        <p class="sub fade" style="margin-top:28px">支持 BOOX Leaf 5、Tab Mini C、Tab Ultra C、Tab X C 与 Kindle Paperwhite。</p>
+      </div>
+    </section>
+
+    <section id="screens" style="background: color-mix(in srgb, var(--fg) 3%, transparent)">
+      <div class="wrap">
+        <h2 class="fade">三步做好一本书</h2>
+        <p class="sub fade">选文件夹 → 确认书名和阅读器 → 开始制作。做好后可以逐页检查。</p>
+        <div class="gallery">
+          <figure class="fade"><img src="assets/screenshots/01-start.png" alt="开始页" loading="lazy"><figcaption>选择漫画文件夹</figcaption></figure>
+          <figure class="fade"><img src="assets/screenshots/05-working.png" alt="制作中" loading="lazy"><figcaption>制作中：按阶段显示进度</figcaption></figure>
+          <figure class="fade"><img src="assets/screenshots/06-done.png" alt="完成" loading="lazy"><figcaption>做好了，打开所在文件夹拷到阅读器</figcaption></figure>
+          <figure class="fade"><img src="assets/screenshots/08-review.png" alt="检查并修正" loading="lazy"><figcaption>检查并修正：拖动红框调整范围</figcaption></figure>
+          <figure class="fade"><img src="assets/screenshots/03-series-dialog.png" alt="整套制作" loading="lazy"><figcaption>整套制作：确认每卷的卷号</figcaption></figure>
+          <figure class="fade"><img src="assets/screenshots/10-library-dark.png" alt="书架" loading="lazy"><figcaption>书架，支持深色模式</figcaption></figure>
+        </div>
+        <p class="sub fade" style="margin-top:20px;font-size:13px">截图中的漫画是程序生成的示意图。</p>
+      </div>
+    </section>
+
+    <section id="download">
+      <div class="wrap">
+        <h2 class="fade">下载</h2>
+        <p class="sub fade" id="download-version">免费下载，解压或打开即可使用，不需要安装 Python 等任何环境。</p>
+        <div class="downloads">
+          <div class="card fade">
+            <h3>macOS</h3>
+            <p>Apple 芯片（M1 及更新），macOS 12 以上。</p>
+            <a class="btn primary" id="dl-mac" href="https://github.com/x956606865/mangabox/releases/latest">下载 .dmg</a>
+            <ol>
+              <li>打开 dmg，把 MangaBox 拖到“应用程序”。</li>
+              <li>第一次打开时如果提示无法验证开发者，到“系统设置 → 隐私与安全性”点“仍要打开”。</li>
+            </ol>
+          </div>
+          <div class="card fade">
+            <h3>Windows</h3>
+            <p>64 位 Windows 10 / 11。有 NVIDIA 显卡可在设置里开启 GPU 加速。</p>
+            <a class="btn primary" id="dl-win" href="https://github.com/x956606865/mangabox/releases/latest">下载 .zip</a>
+            <ol>
+              <li>右键 →“全部解压缩”，打开 MangaBox 文件夹，双击“启动 MangaBox.bat”。</li>
+              <li>如果出现“Windows 已保护你的电脑”，点“更多信息”→“仍要运行”。</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" style="padding-top:24px">
+      <div class="wrap" style="max-width:760px">
+        <h2 class="fade">常见问题</h2>
+        <details class="fade"><summary>会上传我的漫画吗？</summary><p>不会。所有处理都在你的电脑上完成。MangaBox 只在检查新版本（可在设置里关闭）和你主动安装 GPU 加速时联网。</p></details>
+        <details class="fade"><summary>为什么第一次打开会被系统拦一下？</summary><p>MangaBox 是免费软件，没有购买苹果公证和 Windows 代码签名证书，系统无法验证开发者。按上面的说明放行一次即可。</p></details>
+        <details class="fade"><summary>做好的书在哪里？</summary><p>macOS 在“文稿/MangaBox”，Windows 在“文档\MangaBox”，在“设置”里可以一键打开。</p></details>
+        <details class="fade"><summary>支持压缩包吗？</summary><p>目前需要先把压缩包解压成文件夹。</p></details>
+        <details class="fade"><summary>怎么更新？</summary><p>有新版本时 MangaBox 会提示，在“设置 → 关于”里可以直接下载新安装包，替换旧版即可，做好的书不受影响。</p></details>
+        <details class="fade"><summary>遇到问题怎么办？</summary><p>请到 <a href="https://github.com/x956606865/mangabox/issues/new/choose">GitHub Issues</a> 反馈，并附上日志（macOS：~/Library/Logs/MangaBox.log；Windows：文档\MangaBox\client.log）。</p></details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      MangaBox 免费提供。随安装包附带的放大模型 <a href="https://github.com/the-database/MangaJaNai">MangaJaNai / IllustrationJaNai</a>（the-database）采用 CC BY-NC 4.0，仅限非商业使用。
+      · <a href="https://github.com/x956606865/mangabox">GitHub</a>
+    </div>
+  </footer>
+
+  <script>
+    // 进入视野时淡入（系统开启“减少动态效果”时由 CSS 直接显示）。
+    const observer = new IntersectionObserver((entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("in")), { threshold: 0.1 });
+    document.querySelectorAll(".fade").forEach((el) => observer.observe(el));
+
+    // 读取最新 Release：把下载按钮直接指向安装包；读取失败时保留指向发布页的链接。
+    const repo = "x956606865/mangabox";
+    const isMac = /Mac/i.test(navigator.platform) || /Mac OS X/.test(navigator.userAgent);
+    const isWin = /Win/i.test(navigator.platform);
+    fetch(`https://api.github.com/repos/${repo}/releases/latest`)
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((release) => {
+        const find = (suffix) => release.assets.find((a) => a.name.endsWith(suffix));
+        const mac = find("-macos-arm64.dmg"), win = find("-windows-x64.zip");
+        const mb = (a) => `${Math.round(a.size / 1e6)} MB`;
+        const version = release.tag_name.replace(/^v/, "");
+        if (mac) { document.getElementById("dl-mac").href = mac.browser_download_url; document.getElementById("dl-mac").textContent = `下载 .dmg（${mb(mac)}）`; }
+        if (win) { document.getElementById("dl-win").href = win.browser_download_url; document.getElementById("dl-win").textContent = `下载 .zip（${mb(win)}）`; }
+        const main = document.getElementById("main-download");
+        if (isMac && mac) { main.href = mac.browser_download_url; main.textContent = "下载 macOS 版"; }
+        else if (isWin && win) { main.href = win.browser_download_url; main.textContent = "下载 Windows 版"; }
+        document.getElementById("release-meta").textContent = `最新版本 ${version} · macOS（Apple 芯片）· Windows 10 / 11`;
+        document.getElementById("download-version").textContent = `当前版本 ${version}，发布于 ${new Date(release.published_at).toLocaleDateString("zh-CN")}。解压或打开即可使用，不需要安装任何环境。`;
+      })
+      .catch(() => {});
+  </script>
+</body>
+</html>

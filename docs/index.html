@@ -6,9 +6,11 @@
   <title>MangaBox 漫画成书</title>
   <meta name="description" content="把漫画图片文件夹做成适合电子书阅读器的 EPUB / CBZ：自动拆页、裁掉白边、放大并居中。免费，支持 macOS 与 Windows。">
   <link rel="icon" type="image/png" href="assets/icon.png">
+  <link rel="canonical" href="https://mangabox.moukeer.com/">
+  <meta property="og:url" content="https://mangabox.moukeer.com/">
   <meta property="og:title" content="MangaBox 漫画成书">
   <meta property="og:description" content="把漫画图片做成电子书：自动拆页、裁掉白边、放大并居中。">
-  <meta property="og:image" content="assets/screenshots/04-confirm.png">
+  <meta property="og:image" content="https://mangabox.moukeer.com/assets/screenshots/04-confirm.png">
   <style>
     /* 与客户端一致：墨黑 + 纯白，樱红是唯一的强调色；跟随系统切换深色。 */
     :root {
@@ -117,10 +119,10 @@
           <div class="card fade"><span class="dot">裁</span><h3>裁掉白边</h3><p>模型找出正文范围（包括出框的人物、对话框和拟声字），页码和水印不影响裁切。</p></div>
           <div class="card fade"><span class="dot">放</span><h3>放大与居中</h3><p>放大到阅读器分辨率，全书统一大小，翻页不会忽大忽小。</p></div>
           <div class="card fade"><span class="dot">查</span><h3>检查并修正</h3><p>模型不太确定的页排在前面，拖动红框调整，一键重新制作。</p></div>
-          <div class="card fade"><span class="dot">套</span><h3>整套制作</h3><p>按卷分好的多卷漫画，确认卷号后每卷做成一本，系列名和卷号写进电子书。</p></div>
+          <div class="card fade"><span class="dot">套</span><h3>整套制作</h3><p>按卷分好的多卷漫画（子文件夹或压缩包），确认卷号后每卷做成一本，中途停下也能接着做。</p></div>
           <div class="card fade"><span class="dot">安</span><h3>只在你的电脑上</h3><p>原图不会被修改，也不会上传到网络。</p></div>
         </div>
-        <p class="sub fade" style="margin-top:28px">支持 BOOX Leaf 5、Tab Mini C、Tab Ultra C、Tab X C 与 Kindle Paperwhite。</p>
+        <p class="sub fade" style="margin-top:28px">支持图片文件夹和 zip / cbz / rar / 7z 压缩包，拖进窗口就能开始。<br>支持 BOOX Leaf 5、Tab Mini C、Tab Ultra C、Tab X C 与 Kindle Paperwhite。</p>
       </div>
     </section>
 
@@ -156,7 +158,7 @@
           </div>
           <div class="card fade">
             <h3>Windows</h3>
-            <p>64 位 Windows 10 / 11。有 NVIDIA 显卡可在设置里开启 GPU 加速。</p>
+            <p>64 位 Windows 10 / 11。有显卡（NVIDIA / AMD / Intel）时自动加速，不用另外安装。</p>
             <a class="btn primary" id="dl-win" href="https://github.com/x956606865/mangabox/releases/latest">下载 .zip</a>
             <ol>
               <li>右键 →“全部解压缩”，打开 MangaBox 文件夹，双击“启动 MangaBox.bat”。</li>
@@ -170,12 +172,12 @@
     <section id="faq" style="padding-top:24px">
       <div class="wrap" style="max-width:760px">
         <h2 class="fade">常见问题</h2>
-        <details class="fade"><summary>会上传我的漫画吗？</summary><p>不会。所有处理都在你的电脑上完成。MangaBox 只在检查新版本（可在设置里关闭）和你主动安装 GPU 加速时联网。</p></details>
+        <details class="fade"><summary>会上传我的漫画吗？</summary><p>不会。所有处理都在你的电脑上完成。MangaBox 只在检查新版本时联网（可在设置里关闭）。</p></details>
         <details class="fade"><summary>为什么第一次打开会被系统拦一下？</summary><p>MangaBox 是免费软件，没有购买苹果公证和 Windows 代码签名证书，系统无法验证开发者。按上面的说明放行一次即可。</p></details>
         <details class="fade"><summary>做好的书在哪里？</summary><p>macOS 在“文稿/MangaBox”，Windows 在“文档\MangaBox”，在“设置”里可以一键打开。</p></details>
-        <details class="fade"><summary>支持压缩包吗？</summary><p>目前需要先把压缩包解压成文件夹。</p></details>
+        <details class="fade"><summary>支持压缩包吗？</summary><p>支持 zip / cbz / rar / 7z，可以直接选择或拖进窗口；有密码的压缩包需要先解压。</p></details>
         <details class="fade"><summary>怎么更新？</summary><p>有新版本时 MangaBox 会提示，在“设置 → 关于”里可以直接下载新安装包，替换旧版即可，做好的书不受影响。</p></details>
-        <details class="fade"><summary>遇到问题怎么办？</summary><p>请到 <a href="https://github.com/x956606865/mangabox/issues/new/choose">GitHub Issues</a> 反馈，并附上日志（macOS：~/Library/Logs/MangaBox.log；Windows：文档\MangaBox\client.log）。</p></details>
+        <details class="fade"><summary>遇到问题怎么办？</summary><p>请到 <a href="https://github.com/x956606865/mangabox/issues/new/choose">GitHub Issues</a> 反馈，并附上诊断信息：在“设置 → 遇到问题”点“导出诊断信息”，会在“下载”文件夹生成一个压缩包（不含漫画图片）。</p></details>
       </div>
     </section>
   </main>

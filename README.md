@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="https://github.com/x956606865/mangabox/releases/latest"><b>下载最新版</b></a> ·
-  <a href="https://x956606865.github.io/mangabox/">官网</a> ·
+  <a href="https://mangabox.moukeer.com/">官网</a> ·
   <a href="https://github.com/x956606865/mangabox/issues/new/choose">反馈问题</a>
 </p>
 
@@ -25,7 +25,8 @@
 - **裁掉白边**：模型找出每页正文（包括出框的人物、对话框和拟声字）的范围，页码和外围水印不会影响裁切。
 - **放大与居中**：用 MangaJaNai 放大模型把画面放大到阅读器分辨率，全书统一大小，翻页时不会忽大忽小。
 - **检查并修正**：模型不太确定的页排在前面，拖动红框调整后一键重新制作。
-- **整套制作**：一个文件夹里按卷分好的多卷漫画，确认卷号后每卷做成一本，系列名和卷号写进电子书。
+- **整套制作**：一个文件夹里按卷分好的多卷漫画（每卷一个子文件夹或一个压缩包），确认卷号后每卷做成一本，系列名和卷号写进电子书；中途停下也能接着做。
+- **直接打开压缩包**：支持 zip / cbz / rar / 7z，把文件夹或压缩包拖进窗口就能开始。
 - **安全**：原图不会被修改，也不会上传到网络。
 
 支持的阅读器：BOOX Leaf 5、Tab Mini C、Tab Ultra C、Tab X C，Kindle Paperwhite。
@@ -67,19 +68,19 @@ MangaBox 是免费软件，没有向苹果付费做“公证”，第一次打�
 2. 打开解压出的 MangaBox 文件夹，双击“启动 MangaBox.bat”。
 3. 如果出现“Windows 已保护你的电脑”，点“更多信息”→“仍要运行”。
 
-有 NVIDIA 显卡的电脑，可以在“设置 → 加速”里一键开启 GPU 加速（需要下载约 2.6 GB）。
+macOS 用 Apple 芯片加速；Windows 有显卡（NVIDIA / AMD / Intel）时自动用显卡加速，不需要另外下载，用不了时改用 CPU（慢一些，效果一样）。
 
 ## 常见问题
 
-**会上传我的漫画吗？** 不会。所有处理都在你的电脑上完成。联网只用于检查新版本（可在设置里关闭）和你主动安装的 GPU 加速。
+**会上传我的漫画吗？** 不会。所有处理都在你的电脑上完成。联网只用于检查新版本（可在设置里关闭）。
 
 **做好的书在哪里？** macOS 在“文稿/MangaBox”，Windows 在“文档\MangaBox”，也可以在“设置”里一键打开。
 
-**支持压缩包吗？** 目前需要先解压成文件夹。
+**支持压缩包吗？** 支持 zip / cbz / rar / 7z，可以直接选择或拖进窗口；有密码的压缩包需要先解压。
 
 **怎么更新？** 有新版本时 MangaBox 会提示，在“设置 → 关于”里可以直接下载新安装包。
 
-**遇到问题？** 请到 [Issues](https://github.com/x956606865/mangabox/issues/new/choose) 反馈，最好附上日志：macOS 在 `~/Library/Logs/MangaBox.log`，Windows 在“文档\MangaBox\client.log”。
+**遇到问题？** 请到 [Issues](https://github.com/x956606865/mangabox/issues/new/choose) 反馈，最好附上诊断信息：在“设置 → 遇到问题”点“导出诊断信息”，会在“下载”文件夹生成一个压缩包（不含漫画图片）。
 
 ## 许可与致谢
 

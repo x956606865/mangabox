@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MangaBox 漫画成书</title>
-  <meta name="description" content="把漫画图片文件夹做成适合电子书阅读器的 EPUB / CBZ：自动拆页、裁掉白边、放大并居中。免费，支持 macOS 与 Windows。">
+  <meta name="description" content="把漫画图片文件夹做成适合电子书阅读器的 EPUB / CBZ：自动拆页、裁掉白边、放大并居中；书架管理收藏，追更、新刊日历、新番原作。免费，支持 macOS 与 Windows。">
   <link rel="icon" type="image/png" href="assets/icon.png">
   <link rel="canonical" href="https://mangabox.moukeer.com/">
   <meta property="og:url" content="https://mangabox.moukeer.com/">
   <meta property="og:title" content="MangaBox 漫画成书">
-  <meta property="og:description" content="把漫画图片做成电子书：自动拆页、裁掉白边、放大并居中。">
-  <meta property="og:image" content="https://mangabox.moukeer.com/assets/screenshots/04-confirm.png">
+  <meta property="og:description" content="把漫画图片做成电子书，再把收藏管起来：自动拆页、裁掉白边、放大并居中；追更、新刊日历、新番原作。">
+  <meta property="og:image" content="https://mangabox.moukeer.com/assets/screenshots/make-confirm.png">
   <style>
     /* 与客户端一致：墨黑 + 纯白，樱红是唯一的强调色；跟随系统切换深色。 */
     :root {
@@ -61,7 +61,7 @@
     .card p { margin: 0; color: var(--muted); font-size: 15px; }
     .dot { display: inline-flex; width: 34px; height: 34px; border-radius: 10px; background: var(--accent-soft); color: var(--accent);
            align-items: center; justify-content: center; font-weight: 700; margin-bottom: 12px; }
-    .steps { counter-reset: step; }
+    h3.group { text-align: center; font-size: 15px; color: var(--muted); font-weight: 600; margin: 40px 0 16px; }
     .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
     .gallery figure { margin: 0; }
     .gallery img { width: 100%; border-radius: 12px; border: 1px solid var(--line); box-shadow: var(--shadow); display: block; }
@@ -100,13 +100,13 @@
       <div class="wrap">
         <img class="logo fade" src="assets/icon.png" alt="MangaBox 图标">
         <h1 class="fade">把漫画图片做成电子书</h1>
-        <p class="lead fade">选一个装着漫画图片的文件夹，MangaBox 会自动拆页、裁掉白边、放大到阅读器的分辨率并居中，做成 EPUB / CBZ。免费，双击就能用。</p>
+        <p class="lead fade">选一个装着漫画图片的文件夹，MangaBox 会自动拆页、裁掉白边、放大到阅读器的分辨率并居中，做成 EPUB / CBZ。做好的书放进书架，追更、看新刊、找新番原作，把收藏管起来。免费，双击就能用。</p>
         <div class="cta fade">
           <a class="btn primary" id="main-download" href="https://github.com/x956606865/mangabox/releases/latest">下载 MangaBox</a>
           <a class="btn ghost" href="#download">所有版本与安装说明</a>
         </div>
         <p class="meta" id="release-meta">macOS（Apple 芯片）· Windows 10 / 11</p>
-        <div class="shot fade"><img src="assets/screenshots/04-confirm.png" alt="MangaBox 确认书名与阅读器的界面"></div>
+        <div class="shot fade"><img src="assets/screenshots/make-confirm.png" alt="MangaBox 确认书名与阅读器的界面"></div>
       </div>
     </div>
 
@@ -114,16 +114,27 @@
       <div class="wrap">
         <h2 class="fade">在阅读器上舒服地看漫画</h2>
         <p class="sub fade">从网上拿到的漫画图片往往是两页拼在一起的横图、留着大片白边、分辨率又不够。MangaBox 一步帮你处理好。</p>
+        <h3 class="group fade" style="margin-top:0">做书</h3>
         <div class="grid">
           <div class="card fade"><span class="dot">拆</span><h3>自动拆页</h3><p>两页拼在一起的横图自动拆开；日漫先右后左，国漫、韩漫、欧美漫画可以选从左往右。</p></div>
           <div class="card fade"><span class="dot">裁</span><h3>裁掉白边</h3><p>模型找出正文范围（包括出框的人物、对话框和拟声字），页码和水印不影响裁切。</p></div>
           <div class="card fade"><span class="dot">放</span><h3>放大与居中</h3><p>放大到阅读器分辨率，全书统一大小，翻页不会忽大忽小。</p></div>
-          <div class="card fade"><span class="dot">查</span><h3>预览与修正</h3><p>做好先按阅读器的样子翻看；模型不太确定的页排在前面，拖动红框调整，一键重新制作。</p></div>
-          <div class="card fade"><span class="dot">修</span><h3>画质修正与去水印</h3><p>扫描件发黄、歪斜自动修正，正常的数字版不受影响；每页同一位置的网站水印看过对比后可以去掉。</p></div>
-          <div class="card fade"><span class="dot">套</span><h3>整套制作</h3><p>按卷分好的多卷漫画（子文件夹或压缩包），确认卷号后每卷做成一本，中途停下也能接着做。</p></div>
-          <div class="card fade"><span class="dot">安</span><h3>只在你的电脑上</h3><p>原图不会被修改，也不会上传到网络。</p></div>
+          <div class="card fade"><span class="dot">名</span><h3>自动认书名</h3><p>从文件夹名认出书名、作者和卷号，去掉下载站标记；也可以联网到 Bangumi 查正式书名和作者。</p></div>
+          <div class="card fade"><span class="dot">查</span><h3>检查与前后对比</h3><p>模型不太确定的页排在前面，拖动红框调整；原图和成品叠在一起，拖动分界线看裁掉了什么。</p></div>
+          <div class="card fade"><span class="dot">套</span><h3>整套与连载</h3><p>多卷漫画每卷做成一本；按话发布的资源做成一本连载，一话一话往下排，新出的话随时补上。</p></div>
+          <div class="card fade"><span class="dot">修</span><h3>画质与体积</h3><p>扫描件发黄、歪斜自动修正，网站水印可以去掉；为墨水屏优化后体积更小，传到阅读器更快。</p></div>
+          <div class="card fade"><span class="dot">动</span><h3>下载完自动做</h3><p>指定下载文件夹后，书架上做过的作品出了新卷，下载完就按上次的设置自动做成书。</p></div>
         </div>
-        <p class="sub fade" style="margin-top:28px">支持图片文件夹和 zip / cbz / rar / 7z 压缩包，拖进窗口就能开始。<br>支持 BOOX Leaf 5 / Tab Mini C / Tab Ultra C / Tab X C，Kindle / Paperwhite / Colorsoft / Scribe，Kobo Clara / Libra / Sage / Elipsa 2E；其他阅读器可以自定义屏幕分辨率。</p>
+        <h3 class="group fade">收藏</h3>
+        <div class="grid">
+          <div class="card fade"><span class="dot">架</span><h3>书架与分类书架</h3><p>整套叠在一起，标“想读 / 在读 / 读完 / 搁置”；建“通勤”“已收齐”这样的分类书架，一部作品可以放进好几个。</p></div>
+          <div class="card fade"><span class="dot">主</span><h3>作品主页</h3><p>封面、评分、作者、出版社、标签和简介；各卷的出版时间线，有哪几卷、缺哪几卷一眼看出。</p></div>
+          <div class="card fade"><span class="dot">追</span><h3>追更与新刊日历</h3><p>出了新卷在封面上提醒；按月历看书架上的作品哪天出下一卷。</p></div>
+          <div class="card fade"><span class="dot">番</span><h3>新番原作</h3><p>当季和下季动画里有哪些漫画原作，有介绍、评分和首播日期，一键加入书架。</p></div>
+          <div class="card fade"><span class="dot">记</span><h3>想读清单</h3><p>还没有书的作品也能按名字加进书架，先记下来，以后有了再做。</p></div>
+          <div class="card fade"><span class="dot">统</span><h3>收藏统计</h3><p>收了多少作品、卷和页，作者、出版社、标签的分布，还能生成年度回顾图片。</p></div>
+        </div>
+        <p class="sub fade" style="margin-top:28px">原图不会被修改，也不会上传到网络。<br>支持图片文件夹和 zip / cbz / rar / 7z 压缩包，拖进窗口就能开始。<br>支持 BOOX Leaf 5 / Tab Mini C / Tab Ultra C / Tab X C，Kindle / Paperwhite / Colorsoft / Scribe，Kobo Clara / Libra / Sage / Elipsa 2E；其他阅读器可以自定义屏幕分辨率。</p>
       </div>
     </section>
 
@@ -132,14 +143,24 @@
         <h2 class="fade">三步做好一本书</h2>
         <p class="sub fade">选文件夹 → 确认书名和阅读器 → 开始制作。做好后可以逐页检查。</p>
         <div class="gallery">
-          <figure class="fade"><img src="assets/screenshots/01-start.png" alt="开始页" loading="lazy"><figcaption>选择漫画文件夹</figcaption></figure>
-          <figure class="fade"><img src="assets/screenshots/05-working.png" alt="制作中" loading="lazy"><figcaption>制作中：按阶段显示进度</figcaption></figure>
-          <figure class="fade"><img src="assets/screenshots/06-done.png" alt="完成" loading="lazy"><figcaption>做好了，打开所在文件夹拷到阅读器</figcaption></figure>
-          <figure class="fade"><img src="assets/screenshots/08-review.png" alt="检查并修正" loading="lazy"><figcaption>检查并修正：拖动红框调整范围</figcaption></figure>
-          <figure class="fade"><img src="assets/screenshots/03-series-dialog.png" alt="整套制作" loading="lazy"><figcaption>整套制作：确认每卷的卷号</figcaption></figure>
-          <figure class="fade"><img src="assets/screenshots/10-library-dark.png" alt="书架" loading="lazy"><figcaption>书架，支持深色模式</figcaption></figure>
+          <figure class="fade"><img src="assets/screenshots/make-start.png" alt="开始页" loading="lazy"><figcaption>选择漫画文件夹，或拖进窗口</figcaption></figure>
+          <figure class="fade"><img src="assets/screenshots/make-working.png" alt="制作中" loading="lazy"><figcaption>制作中：按阶段显示进度</figcaption></figure>
+          <figure class="fade"><img src="assets/screenshots/make-done.png" alt="完成" loading="lazy"><figcaption>做好了，打开所在文件夹拷到阅读器</figcaption></figure>
+          <figure class="fade"><img src="assets/screenshots/make-review.png" alt="检查并修正" loading="lazy"><figcaption>检查并修正：拖动红框调整范围</figcaption></figure>
+          <figure class="fade"><img src="assets/screenshots/make-compare.png" alt="做书前后对比" loading="lazy"><figcaption>做书前后对比：拖动分界线看差别</figcaption></figure>
+          <figure class="fade"><img src="assets/screenshots/shelf-series.png" alt="整套" loading="lazy"><figcaption>一部作品里，卷和连载分开摆放</figcaption></figure>
         </div>
-        <p class="sub fade" style="margin-top:20px;font-size:13px">截图中的漫画是程序生成的示意图。</p>
+        <h2 class="fade" style="margin-top:72px">把收藏管起来</h2>
+        <p class="sub fade">书架、作品主页、新刊日历、新番原作和统计。</p>
+        <div class="gallery">
+          <figure class="fade"><img src="assets/screenshots/shelf.png" alt="书架" loading="lazy"><figcaption>书架：阅读状态和分类书架</figcaption></figure>
+          <figure class="fade"><img src="assets/screenshots/work-profile.png" alt="作品主页" loading="lazy"><figcaption>作品主页：资料和各卷时间线</figcaption></figure>
+          <figure class="fade"><img src="assets/screenshots/calendar.png" alt="新刊日历" loading="lazy"><figcaption>新刊日历</figcaption></figure>
+          <figure class="fade"><img src="assets/screenshots/seasons.png" alt="新番原作" loading="lazy"><figcaption>新番原作：一键加入书架</figcaption></figure>
+          <figure class="fade"><img src="assets/screenshots/stats.png" alt="收藏统计" loading="lazy"><figcaption>收藏统计与年度回顾</figcaption></figure>
+          <figure class="fade"><img src="assets/screenshots/shelf-dark.png" alt="深色模式" loading="lazy"><figcaption>支持深色模式</figcaption></figure>
+        </div>
+        <p class="sub fade" style="margin-top:20px;font-size:13px">截图中“星屑のアトリエ”是程序生成的示意漫画；其他作品的资料来自 Bangumi，封面已模糊处理。</p>
       </div>
     </section>
 
@@ -173,7 +194,7 @@
     <section id="faq" style="padding-top:24px">
       <div class="wrap" style="max-width:760px">
         <h2 class="fade">常见问题</h2>
-        <details class="fade"><summary>会上传我的漫画吗？</summary><p>不会。所有处理都在你的电脑上完成。MangaBox 只在检查新版本时联网（可在设置里关闭）。</p></details>
+        <details class="fade"><summary>会上传我的漫画吗？</summary><p>不会。所有处理都在你的电脑上完成，图片不会离开你的电脑。MangaBox 联网只做两件事：检查新版本（可在设置里关闭），以及在你查找作者、追更、看作品主页和新番时向 Bangumi 查询资料（只发送作品名或条目编号）。</p></details>
         <details class="fade"><summary>为什么第一次打开会被系统拦一下？</summary><p>MangaBox 是免费软件，没有购买苹果公证和 Windows 代码签名证书，系统无法验证开发者。按上面的说明放行一次即可。</p></details>
         <details class="fade"><summary>做好的书在哪里？</summary><p>macOS 在“文稿/MangaBox”，Windows 在“文档\MangaBox”，在“设置”里可以一键打开。</p></details>
         <details class="fade"><summary>支持压缩包吗？</summary><p>支持 zip / cbz / rar / 7z，可以直接选择或拖进窗口；有密码的压缩包需要先解压。</p></details>

@@ -132,6 +132,7 @@
           <div class="card fade"><span class="dot">追</span><h3>追更与新刊日历</h3><p>出了新卷在封面上提醒；按月历看书架上的作品哪天出下一卷。</p></div>
           <div class="card fade"><span class="dot">番</span><h3>新番原作</h3><p>当季和下季动画里有哪些漫画原作，有介绍、评分和首播日期，一键加入书架。</p></div>
           <div class="card fade"><span class="dot">记</span><h3>想读清单</h3><p>还没有书的作品也能按名字加进书架，先记下来，以后有了再做。</p></div>
+          <div class="card fade"><span class="dot">云</span><h3>百度网盘</h3><p>做好的书一键上传到自己的百度网盘，阅读器（如 BOOX）直接从网盘读，电脑上不用全部留着。官方开放平台授权，不需要密码。</p></div>
           <div class="card fade"><span class="dot">统</span><h3>收藏统计</h3><p>收了多少作品、卷和页，作者、出版社、标签的分布，还能生成年度回顾图片。</p></div>
         </div>
         <p class="sub fade" style="margin-top:28px">原图不会被修改，也不会上传到网络。<br>支持图片文件夹和 zip / cbz / rar / 7z 压缩包，拖进窗口就能开始。<br>支持 BOOX Leaf 5 / Tab Mini C / Tab Ultra C / Tab X C，Kindle / Paperwhite / Colorsoft / Scribe，Kobo Clara / Libra / Sage / Elipsa 2E；其他阅读器可以自定义屏幕分辨率。</p>
@@ -194,7 +195,8 @@
     <section id="faq" style="padding-top:24px">
       <div class="wrap" style="max-width:760px">
         <h2 class="fade">常见问题</h2>
-        <details class="fade"><summary>会上传我的漫画吗？</summary><p>不会。所有处理都在你的电脑上完成，图片不会离开你的电脑。MangaBox 联网只做两件事：检查新版本（可在设置里关闭），以及在你查找作者、追更、看作品主页和新番时向 Bangumi 查询资料（只发送作品名或条目编号）。</p></details>
+        <details class="fade"><summary>会上传我的漫画吗？</summary><p>不会。所有处理都在你的电脑上完成，图片不会离开你的电脑。MangaBox 只在这些时候联网：检查新版本和下载模型（GitHub）；查找作者、追更、看作品主页和新番时向 Bangumi 查询资料（只发送作品名或条目编号）；以及你主动连接百度网盘、选择“上传到网盘”时，把你选的电子书上传到你自己网盘的“我的应用数据”文件夹。详见<a href="privacy.html">隐私政策</a>。</p></details>
+        <details class="fade"><summary>百度网盘安全吗？</summary><p>使用百度网盘官方开放平台的扫码授权，MangaBox 拿不到你的百度密码，只能读写网盘里“我的应用数据”下本应用的文件夹。令牌只存在你的电脑上，在设置里点“断开”就会删除。</p></details>
         <details class="fade"><summary>为什么第一次打开会被系统拦一下？</summary><p>MangaBox 是免费软件，没有购买苹果公证和 Windows 代码签名证书，系统无法验证开发者。按上面的说明放行一次即可。</p></details>
         <details class="fade"><summary>做好的书在哪里？</summary><p>macOS 在“文稿/MangaBox”，Windows 在“文档\MangaBox”，在“设置”里可以一键打开。</p></details>
         <details class="fade"><summary>支持压缩包吗？</summary><p>支持 zip / cbz / rar / 7z，可以直接选择或拖进窗口；有密码的压缩包需要先解压。</p></details>
@@ -207,7 +209,7 @@
   <footer>
     <div class="wrap">
       MangaBox 免费提供。随安装包附带的放大模型 <a href="https://github.com/the-database/MangaJaNai">MangaJaNai / IllustrationJaNai</a>（the-database）采用 CC BY-NC 4.0，仅限非商业使用。
-      · <a href="https://github.com/x956606865/mangabox">GitHub</a>
+      · <a href="https://github.com/x956606865/mangabox">GitHub</a> · <a href="privacy.html">隐私政策</a> · <a href="terms.html">服务条款</a>
     </div>
   </footer>
 

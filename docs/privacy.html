@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>隐私政策 · MangaBox 漫画成书</title>
+  <meta name="description" content="MangaBox 隐私政策：漫画只在你的电脑上处理；联网只用于检查更新、下载模型、查询 Bangumi 作品资料，以及你主动连接后的百度网盘上传。">
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  <link rel="canonical" href="https://mangabox.moukeer.com/privacy.html">
+  <style>
+    :root { --bg: #fcfcfc; --fg: #1c1c1c; --muted: #6b6b6b; --line: #e6e6e6; --card: #ffffff; --accent: #d23a63; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #151515; --fg: #f2f2f2; --muted: #a3a3a3; --line: #2a2a2a; --card: #1f1f1f; --accent: #e9668a; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--fg); line-height: 1.8;
+           font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", sans-serif; }
+    a { color: var(--accent); }
+    header { border-bottom: 1px solid var(--line); }
+    header .wrap { display: flex; align-items: center; gap: 10px; height: 60px; }
+    header a { display: flex; align-items: center; gap: 10px; color: inherit; font-weight: 700; text-decoration: none; }
+    header img { width: 28px; height: 28px; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+    main { padding: 40px 0 64px; }
+    h1 { font-size: clamp(26px, 5vw, 34px); margin: 0 0 6px; }
+    h2 { font-size: 19px; margin: 36px 0 8px; }
+    .meta { color: var(--muted); font-size: 14px; margin: 0 0 24px; }
+    p, li { font-size: 15px; }
+    ul { padding-left: 22px; }
+    table { width: 100%; min-width: 600px; border-collapse: collapse; font-size: 14px; margin: 8px 0; }
+    th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+    th { background: var(--card); }
+    .scroll { overflow-x: auto; }
+    footer { border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--muted); font-size: 13px; }
+    footer a { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><a href="./"><img src="assets/icon.png" alt="">MangaBox</a></div></header>
+  <main class="wrap">
+    <h1>隐私政策</h1>
+    <p class="meta">更新日期：2026 年 10 月 14 日 · 适用于 MangaBox 漫画成书（macOS / Windows 桌面软件）</p>
+
+    <p>MangaBox 是一款免费的桌面软件，用来把漫画图片做成电子书，并管理你的书架。我们尽量少用网络、少碰数据：<strong>你的漫画图片和做好的电子书只在你的电脑上处理，不会上传到我们的服务器——MangaBox 没有自己的服务器，也没有账号系统。</strong></p>
+
+    <h2>一、我们不收集的信息</h2>
+    <ul>
+      <li>不收集姓名、手机号、邮箱、设备标识等个人信息，没有注册和登录。</li>
+      <li>不做使用统计、行为分析，没有广告，不接入任何统计或广告 SDK。</li>
+      <li>不读取你电脑上除你选择的漫画文件夹、MangaBox 数据目录以外的文件。</li>
+    </ul>
+
+    <h2>二、保存在你电脑上的数据</h2>
+    <p>以下数据只保存在你自己的电脑上，你可以随时删除：</p>
+    <ul>
+      <li>数据目录（默认 macOS“文稿/MangaBox”、Windows“文档\MangaBox”）：做好的电子书、制作记录、书架上的阅读状态与分类、从 Bangumi 查到的作品资料和封面缓存。</li>
+      <li>用户配置目录：数据目录位置、窗口大小、“在网上查找”的网址、百度网盘的授权令牌（连接百度网盘后才有，文件只允许你本人读写）。</li>
+    </ul>
+
+    <h2>三、MangaBox 什么时候会联网</h2>
+    <div class="scroll">
+    <table>
+      <tr><th>用途</th><th>访问的地址</th><th>发送的内容</th><th>何时发生</th></tr>
+      <tr><td>检查新版本、一键更新</td><td>github.com（MangaBox 的公开发布页）</td><td>不发送你的数据，只下载版本信息和安装包</td><td>启动时（可在设置里关闭）或你点“检查更新”</td></tr>
+      <tr><td>下载识别与放大模型</td><td>github.com</td><td>不发送你的数据，只下载模型文件</td><td>第一次使用或你点“检查更新”</td></tr>
+      <tr><td>查找作者、追更、作品主页、新番原作</td><td>api.bgm.tv、lain.bgm.tv（Bangumi）</td><td>作品名或 Bangumi 条目编号；不发送图片</td><td>你使用这些功能时</td></tr>
+      <tr><td>百度网盘（可选）</td><td>openapi.baidu.com、pan.baidu.com、d.pcs.baidu.com 等百度网盘开放平台地址</td><td>你选择上传的电子书文件；授权令牌</td><td>只在你主动连接百度网盘、并选择上传后</td></tr>
+      <tr><td>在网上查找（可选）</td><td>你在设置里开启或填写的网站</td><td>作品名（用默认浏览器打开搜索页）</td><td>只在你点击时；MangaBox 不读取网页内容</td></tr>
+    </table>
+    </div>
+
+    <h2>四、百度网盘</h2>
+    <ul>
+      <li>MangaBox 通过<a href="https://pan.baidu.com/union/">百度网盘开放平台</a>的官方接口和设备码授权连接你的网盘：你用百度网盘 App 扫码或在百度的网页上确认授权。MangaBox 不会获取你的百度账号密码。</li>
+      <li>授权后 MangaBox 只读写你网盘中“我的应用数据”下本应用的文件夹，用于存放你上传的电子书、列出这些文件，以及（在你需要时）下载回电脑。不访问、不修改其他文件，不分享、不公开任何文件。</li>
+      <li>只有在你选择“上传到网盘”后才会上传文件。授权令牌保存在你电脑的用户配置目录，不发送给我们或任何第三方。</li>
+      <li>在设置里点“断开”会删除电脑上保存的令牌；你也可以在百度账号的授权管理中撤销授权。已经上传到网盘的文件由你在百度网盘中自行管理。</li>
+      <li>百度网盘对数据的处理适用百度的隐私政策。</li>
+    </ul>
+
+    <h2>五、诊断信息</h2>
+    <p>遇到问题时，你可以在“设置 → 遇到问题”导出诊断信息。它只会生成在你电脑的“下载”文件夹里（包含日志和设置，不含漫画图片），是否发给开发者由你决定。</p>
+
+    <h2>六、未成年人</h2>
+    <p>MangaBox 不收集任何个人信息，也不面向未成年人提供特别服务。</p>
+
+    <h2>七、政策更新</h2>
+    <p>本政策更新时会在本页更新日期并说明变化；涉及新的联网用途时，会在软件的更新说明中告知。</p>
+
+    <h2>八、联系我们</h2>
+    <p>对隐私有任何疑问，请到 <a href="https://github.com/x956606865/mangabox/issues/new/choose">GitHub Issues</a> 反馈。</p>
+  </main>
+  <footer><div class="wrap"><a href="./">返回首页</a> · <a href="terms.html">服务条款</a></div></footer>
+</body>
+</html>

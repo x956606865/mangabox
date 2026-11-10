@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MangaBox 漫画成书</title>
-  <meta name="description" content="把漫画图片文件夹做成适合电子书阅读器的 EPUB / CBZ：自动拆页、裁掉白边、放大并居中；书架管理收藏，追更、新刊日历、新番原作。免费，支持 macOS 与 Windows。">
+  <title>ACGBox 次元匣</title>
+  <meta name="description" content="ACGBox 次元匣（原 MangaBox）：把漫画图片做成适合电子书阅读器的 EPUB / CBZ，书架管理漫画收藏；番剧库、追番表、按字幕组订阅，连上自己的 Plex 和 AutoBangumi 后追番一站搞定。免费，双击就能用。">
   <link rel="icon" type="image/png" href="assets/icon.png">
   <link rel="canonical" href="https://mangabox.moukeer.com/">
   <meta property="og:url" content="https://mangabox.moukeer.com/">
-  <meta property="og:title" content="MangaBox 漫画成书">
-  <meta property="og:description" content="把漫画图片做成电子书，再把收藏管起来：自动拆页、裁掉白边、放大并居中；追更、新刊日历、新番原作。">
+  <meta property="og:title" content="ACGBox 次元匣">
+  <meta property="og:description" content="漫画做成书、收藏管起来；番剧库、追番表、按字幕组订阅，配合自己的 Plex 和 AutoBangumi 追番。">
   <meta property="og:image" content="https://mangabox.moukeer.com/assets/screenshots/make-confirm.png">
   <style>
     /* 与客户端一致：墨黑 + 纯白，樱红是唯一的强调色；跟随系统切换深色。 */
@@ -86,9 +86,9 @@
 <body>
   <header>
     <div class="wrap">
-      <a class="brand" href="#"><img src="assets/icon.png" alt="">MangaBox</a>
+      <a class="brand" href="#"><img src="assets/icon.png" alt="">ACGBox 次元匣</a>
       <nav>
-        <a href="#features">功能</a><a href="#screens">截图</a><a href="#download">下载</a><a href="#faq">常见问题</a>
+        <a href="#features">漫画</a><a href="#anime">番剧</a><a href="#screens">截图</a><a href="#download">下载</a><a href="#faq">常见问题</a>
         <a href="https://github.com/x956606865/mangabox">GitHub</a>
       </nav>
     </div>
@@ -98,22 +98,22 @@
     <div class="hero">
       <div class="screentone"></div>
       <div class="wrap">
-        <img class="logo fade" src="assets/icon.png" alt="MangaBox 图标">
-        <h1 class="fade">把漫画图片做成电子书</h1>
-        <p class="lead fade">选一个装着漫画图片的文件夹，MangaBox 会自动拆页、裁掉白边、放大到阅读器的分辨率并居中，做成 EPUB / CBZ。做好的书放进书架，追更、看新刊、找新番原作，把收藏管起来。免费，双击就能用。</p>
+        <img class="logo fade" src="assets/icon.png" alt="ACGBox 图标">
+        <h1 class="fade">漫画做成书，番剧追到底</h1>
+        <p class="lead fade">ACGBox 次元匣（原 MangaBox）把漫画图片自动拆页、裁掉白边、放大到阅读器的分辨率，做成 EPUB / CBZ，再和手里已有的电子书一起放进书架：追更、看新刊、打分。番剧区按作品管理番剧、追番表看每天更新；连上你自己的 Plex 和 AutoBangumi，订阅、下载进度、整理元数据、入库和观看记录都在一个窗口里。</p>
         <div class="cta fade">
-          <a class="btn primary" id="main-download" href="https://github.com/x956606865/mangabox/releases/latest">下载 MangaBox</a>
+          <a class="btn primary" id="main-download" href="https://github.com/x956606865/mangabox/releases/latest">下载 ACGBox</a>
           <a class="btn ghost" href="#download">所有版本与安装说明</a>
         </div>
-        <p class="meta" id="release-meta">macOS（Apple 芯片）· Windows 10 / 11</p>
-        <div class="shot fade"><img src="assets/screenshots/make-confirm.png" alt="MangaBox 确认书名与阅读器的界面"></div>
+        <p class="meta" id="release-meta">macOS（Apple 芯片）· Windows 10 / 11 · 安卓手机管理端</p>
+        <div class="shot fade"><img src="assets/screenshots/make-confirm.png" alt="ACGBox 确认书名与阅读器的界面"></div>
       </div>
     </div>
 
     <section id="features">
       <div class="wrap">
         <h2 class="fade">在阅读器上舒服地看漫画</h2>
-        <p class="sub fade">从网上拿到的漫画图片往往是两页拼在一起的横图、留着大片白边、分辨率又不够。MangaBox 一步帮你处理好。</p>
+        <p class="sub fade">从网上拿到的漫画图片往往是两页拼在一起的横图、留着大片白边、分辨率又不够。ACGBox 一步帮你处理好。</p>
         <h3 class="group fade" style="margin-top:0">做书</h3>
         <div class="grid">
           <div class="card fade"><span class="dot">拆</span><h3>自动拆页</h3><p>两页拼在一起的横图自动拆开；日漫先右后左，国漫、韩漫、欧美漫画可以选从左往右。</p></div>
@@ -127,15 +127,43 @@
         </div>
         <h3 class="group fade">收藏</h3>
         <div class="grid">
-          <div class="card fade"><span class="dot">架</span><h3>书架与分类书架</h3><p>整套叠在一起，标“想读 / 在读 / 读完 / 搁置”；建“通勤”“已收齐”这样的分类书架，一部作品可以放进好几个。</p></div>
-          <div class="card fade"><span class="dot">主</span><h3>作品主页</h3><p>封面、评分、作者、出版社、标签和简介；各卷的出版时间线，有哪几卷、缺哪几卷一眼看出。</p></div>
-          <div class="card fade"><span class="dot">追</span><h3>追更与新刊日历</h3><p>出了新卷在封面上提醒；按月历看书架上的作品哪天出下一卷。</p></div>
+          <div class="card fade"><span class="dot">架</span><h3>书架与分类书架</h3><p>标“想读 / 在读 / 读完 / 搁置”，建“通勤”“已收齐”这样的分类书架；按文件夹登记时，分类文件夹会自动建成书架。</p></div>
+          <div class="card fade"><span class="dot">登</span><h3>已有的书也能登记</h3><p>导入现成的电子书、读取 Calibre 书库、扫描文件夹或 NAS，商店里买的也能登记；文件留在原处，同一卷的中文版和日文版分开算。</p></div>
+          <div class="card fade"><span class="dot">主</span><h3>作品主页与详情</h3><p>封面、评分、作者、标签和简介，各卷的出版时间线；详情里按卷列出每一份在本机、网盘、别的设备上的位置和大小。</p></div>
+          <div class="card fade"><span class="dot">读</span><h3>每卷已读</h3><p>在作品主页的各卷时间线上标已读，也能把第 1 卷到这一卷一起标上；已完结的作品全部读完会自动改成“读完”。</p></div>
+          <div class="card fade"><span class="dot">追</span><h3>追更与新刊日历</h3><p>出了新卷在书架上提醒，一键筛出有新卷的作品；按月历看书架上的作品哪天出下一卷。</p></div>
+          <div class="card fade"><span class="dot">评</span><h3>我的评分</h3><p>按画风、剧情、人物塑造、主观喜爱等维度打分，不适用的跳过，按权重算出最终评分；评分方案可以自己改，还能写一篇短评。</p></div>
           <div class="card fade"><span class="dot">番</span><h3>新番原作</h3><p>当季和下季动画里有哪些漫画原作，有介绍、评分和首播日期，一键加入书架。</p></div>
-          <div class="card fade"><span class="dot">记</span><h3>想读清单</h3><p>还没有书的作品也能按名字加进书架，先记下来，以后有了再做。</p></div>
-          <div class="card fade"><span class="dot">云</span><h3>百度网盘</h3><p>做好的书一键上传到自己的百度网盘，阅读器（如 BOOX）直接从网盘读，电脑上不用全部留着。官方开放平台授权，不需要密码。</p></div>
           <div class="card fade"><span class="dot">统</span><h3>收藏统计</h3><p>收了多少作品、卷和页，作者、出版社、标签的分布，还能生成年度回顾图片。</p></div>
         </div>
-        <p class="sub fade" style="margin-top:28px">原图不会被修改，也不会上传到网络。<br>支持图片文件夹和 zip / cbz / rar / 7z 压缩包，拖进窗口就能开始。<br>支持 BOOX Leaf 5 / Tab Mini C / Tab Ultra C / Tab X C，Kindle / Paperwhite / Colorsoft / Scribe，Kobo Clara / Libra / Sage / Elipsa 2E；其他阅读器可以自定义屏幕分辨率。</p>
+        <h3 class="group fade">网盘与多设备</h3>
+        <div class="grid">
+          <div class="card fade"><span class="dot">云</span><h3>百度网盘</h3><p>做好的书上传到自己的百度网盘、放进你选的文件夹，也可以做完自动上传；阅读器（如 BOOX）直接从网盘读。用你自己注册的开放平台应用扫码授权，不需要密码。</p></div>
+          <div class="card fade"><span class="dot">整</span><h3>登记与整理网盘里的书</h3><p>网盘里已有的电子书扫描后登记到书架；一部作品散在各处的文件归拢到一起，重复的卷挑一份留下，按书架分好文件夹。</p></div>
+          <div class="card fade"><span class="dot">清</span><h3>高清化后替换</h3><p>网盘里画质差的一卷，一键下载下来重新做成书，再覆盖网盘上的原文件；做过的会记下来，不会反复做。</p></div>
+          <div class="card fade"><span class="dot">省</span><h3>本机瘦身</h3><p>已经放进网盘的书可以释放本机空间，需要时再下载回来；不常改的书可以清理成品页和原图。删掉的都进废纸篓。</p></div>
+          <div class="card fade"><span class="dot">同</span><h3>多台电脑同步书架</h3><p>阅读状态、分类书架、已读、评分和作品资料，通过共享文件夹或 WebDAV（坚果云、NAS 等）在几台电脑之间同步。</p></div>
+          <div class="card fade"><span class="dot">机</span><h3>安卓手机管理端</h3><p>在手机上看书架和作品资料、改阅读状态、标已读、打分、按名字添加想读的作品，和电脑同步。只管理，不在手机上看漫画。</p></div>
+        </div>
+        <p class="sub fade" style="margin-top:28px">原图不会被修改；只有你选择上传的成书会放进你自己的网盘。<br>支持图片文件夹、zip / cbz / rar / 7z 压缩包和没有版权保护的 EPUB（手里只有低清的 EPUB 也能重新放大、裁边），拖进窗口就能开始。<br>支持 BOOX Leaf 5 / Tab Mini C / Tab Ultra C / Tab X C，Kindle / Paperwhite / Colorsoft / Scribe，Kobo Clara / Libra / Sage / Elipsa 2E；其他阅读器可以自定义屏幕分辨率。</p>
+      </div>
+    </section>
+
+    <section id="anime" style="padding-top:24px">
+      <div class="wrap">
+        <h2 class="fade">番剧也管起来</h2>
+        <p class="sub fade">番剧区和漫画完全分开：按作品汇总多季，记每集看到哪。连上你自己部署的 Plex 和 AutoBangumi 后，从订阅、下载、整理到入库都不用再一个个打开后台。</p>
+        <div class="grid">
+          <div class="card fade"><span class="dot">库</span><h3>番剧库</h3><p>同一部作品的各季放在一起，资料来自 Bangumi，有 TMDB Key 时补上剧照和单集简介；记每集看没看，按加入、最近观看或发行时间排序。</p></div>
+          <div class="card fade"><span class="dot">表</span><h3>追番表</h3><p>按星期列出当季放送，在追的番显示更新到第几集、几集没看；只显示当季在播的，完结的老番不会混进来。</p></div>
+          <div class="card fade"><span class="dot">订</span><h3>按字幕组订阅</h3><p>在追番表上点一部番，看各字幕组最近发布了哪几集，选一个交给你的 AutoBangumi 订阅，番剧同时加进番剧库。</p></div>
+          <div class="card fade"><span class="dot">管</span><h3>订阅管理</h3><p>AutoBangumi 的订阅按开播的年份和季度分组，改番名、季、集数偏移，过季的一键整季停用；已经下好的文件不会动。</p></div>
+          <div class="card fade"><span class="dot">动</span><h3>下载动态</h3><p>RSS 新出了哪些集、qBittorrent 下到多少、哪一集卡住了，一页看完；每集从下载、整理到 Plex 入库走到了哪一步。</p></div>
+          <div class="card fade"><span class="dot">整</span><h3>整理元数据</h3><p>新下完的集自动写好 Kodi 格式的 NFO、海报、背景图和剧照，和 TMM 的产物一样；只补缺的，不覆盖已有文件，可以撤销。</p></div>
+          <div class="card fade"><span class="dot">P</span><h3>Plex 同步</h3><p>观看记录和 Plex 双向同步，Plex 的资料库自动建成番剧书架；新集整理好后让 Plex 只刷新这部番，刷新完自动拉回。</p></div>
+          <div class="card fade"><span class="dot">播</span><h3>本地文件与播放</h3><p>认出番剧文件夹里的每一集，按规范重命名；用 IINA、mpv 等外部播放器播放，只在 Plex 上有的集直接打开 Plex 播放。</p></div>
+        </div>
+        <p class="sub fade" style="margin-top:28px">ACGBox 不内置下载，也不提供任何资源：订阅和下载由你自己的 AutoBangumi 和 qBittorrent 完成，按字幕组订阅时只读取蜜柑计划公开的番剧页面来列出字幕组。</p>
       </div>
     </section>
 
@@ -152,7 +180,7 @@
           <figure class="fade"><img src="assets/screenshots/shelf-series.png" alt="整套" loading="lazy"><figcaption>一部作品里，卷和连载分开摆放</figcaption></figure>
         </div>
         <h2 class="fade" style="margin-top:72px">把收藏管起来</h2>
-        <p class="sub fade">书架、作品主页、新刊日历、新番原作和统计。</p>
+        <p class="sub fade">书架、作品主页、新刊日历、新番原作和统计。（评分、网盘、多设备同步和番剧区的截图之后补上。）</p>
         <div class="gallery">
           <figure class="fade"><img src="assets/screenshots/shelf.png" alt="书架" loading="lazy"><figcaption>书架：阅读状态和分类书架</figcaption></figure>
           <figure class="fade"><img src="assets/screenshots/work-profile.png" alt="作品主页" loading="lazy"><figcaption>作品主页：资料和各卷时间线</figcaption></figure>
@@ -175,7 +203,7 @@
             <p>Apple 芯片（M1 及更新），macOS 12 以上。</p>
             <a class="btn primary" id="dl-mac" href="https://github.com/x956606865/mangabox/releases/latest">下载 .dmg</a>
             <ol>
-              <li>打开 dmg，把 MangaBox 拖到“应用程序”。</li>
+              <li>打开 dmg，把 MangaBox（ACGBox 的程序文件）拖到“应用程序”。</li>
               <li>第一次打开时如果提示无法验证开发者，到“系统设置 → 隐私与安全性”点“仍要打开”。</li>
             </ol>
           </div>
@@ -188,6 +216,15 @@
               <li>如果出现“Windows 已保护你的电脑”，点“更多信息”→“仍要运行”。</li>
             </ol>
           </div>
+          <div class="card fade">
+            <h3>安卓手机（管理端）</h3>
+            <p>Android 8.0 以上。管理书架、标已读、打分，和电脑同步；不在手机上看漫画。</p>
+            <a class="btn primary" id="dl-android" href="https://github.com/x956606865/mangabox/releases/latest">下载 .apk</a>
+            <ol>
+              <li>用手机浏览器下载后打开安装，按提示允许“安装未知应用”。</li>
+              <li>在 App 的设置里选同步文件夹或填 WebDAV，书架就会和电脑一致。有新版本时 App 里会提示。</li>
+            </ol>
+          </div>
         </div>
       </div>
     </section>
@@ -195,12 +232,14 @@
     <section id="faq" style="padding-top:24px">
       <div class="wrap" style="max-width:760px">
         <h2 class="fade">常见问题</h2>
-        <details class="fade"><summary>会上传我的漫画吗？</summary><p>不会。所有处理都在你的电脑上完成，图片不会离开你的电脑。MangaBox 只在这些时候联网：检查新版本和下载模型（GitHub）；查找作者、追更、看作品主页和新番时向 Bangumi 查询资料（只发送作品名或条目编号）；以及你主动连接百度网盘、选择“上传到网盘”时，把你选的电子书上传到你自己网盘的“我的应用数据”文件夹。详见<a href="privacy.html">隐私政策</a>。</p></details>
-        <details class="fade"><summary>百度网盘安全吗？</summary><p>使用百度网盘官方开放平台的扫码授权，MangaBox 拿不到你的百度密码，只能读写网盘里“我的应用数据”下本应用的文件夹。令牌只存在你的电脑上，在设置里点“断开”就会删除。</p></details>
-        <details class="fade"><summary>为什么第一次打开会被系统拦一下？</summary><p>MangaBox 是免费软件，没有购买苹果公证和 Windows 代码签名证书，系统无法验证开发者。按上面的说明放行一次即可。</p></details>
+        <details class="fade"><summary>会上传我的漫画吗？</summary><p>不会。所有处理都在你的电脑上完成，原图不会离开你的电脑。ACGBox 只在这些时候联网：检查新版本和下载模型（GitHub）；查找作者、追更、看作品主页、番剧资料时向 Bangumi 查询（只发送作品名或条目编号）；你填了 TMDB Key 时取番剧剧照和简介；你连接了 Plex、AutoBangumi 时访问你自己的服务器；按字幕组订阅时读取蜜柑计划公开的番剧页面；你设置了 WebDAV 同步时，把书架记录同步到你自己的 WebDAV；以及你主动连接百度网盘后，按你的操作上传、下载、整理你网盘里的电子书。详见<a href="privacy.html">隐私政策</a>。</p></details>
+        <details class="fade"><summary>百度网盘安全吗？</summary><p>使用百度网盘官方开放平台的扫码授权，用的是你自己在开放平台注册的应用，ACGBox 拿不到你的百度密码。它只在你操作时访问网盘、只访问你选的文件夹：上传到你选的“网盘书库”，扫描、整理、高清化你指定的文件；删除的文件进网盘回收站，覆盖前会再提醒一次。令牌只存在你的电脑上，在设置里点“断开”就会删除。</p></details>
+        <details class="fade"><summary>多台电脑、手机怎么同步？</summary><p>在每台设备的设置里选同一个同步文件夹（iCloud、坚果云等同步盘里的文件夹都可以），或填同一个 WebDAV 地址。同步的是书架记录（作品、阅读状态、分类、已读、评分）和作品资料、封面，不同步电子书本身；电子书可以放在网盘里共用。</p></details>
+        <details class="fade"><summary>为什么第一次打开会被系统拦一下？</summary><p>ACGBox 是免费软件，没有购买苹果公证和 Windows 代码签名证书，系统无法验证开发者。按上面的说明放行一次即可。</p></details>
         <details class="fade"><summary>做好的书在哪里？</summary><p>macOS 在“文稿/MangaBox”，Windows 在“文档\MangaBox”，在“设置”里可以一键打开。</p></details>
         <details class="fade"><summary>支持压缩包吗？</summary><p>支持 zip / cbz / rar / 7z，可以直接选择或拖进窗口；有密码的压缩包需要先解压。</p></details>
-        <details class="fade"><summary>怎么更新？</summary><p>有新版本时 MangaBox 会提示，在“设置 → 关于”点“更新并重启”，会自动下载、安装并重新打开（0.5.0 起），做好的书和设置都会保留。</p></details>
+        <details class="fade"><summary>怎么更新？</summary><p>有新版本时 ACGBox 会提示，在“设置 → 关于”点“更新并重启”，会自动下载、安装并重新打开（0.5.0 起），做好的书和设置都会保留。</p></details>
+        <details class="fade"><summary>MangaBox 怎么变成了 ACGBox？</summary><p>加入番剧区以后，软件不再只管漫画，名字改成了 ACGBox 次元匣。只是改名：老版本照常收到更新，做好的书、书架和设置都不变；数据文件夹、安装后的程序文件仍然叫 MangaBox。</p></details>
         <details class="fade"><summary>遇到问题怎么办？</summary><p>请到 <a href="https://github.com/x956606865/mangabox/issues/new/choose">GitHub Issues</a> 反馈，并附上诊断信息：在“设置 → 遇到问题”点“导出诊断信息”，会在“下载”文件夹生成一个压缩包（不含漫画图片）。</p></details>
       </div>
     </section>
@@ -208,7 +247,7 @@
 
   <footer>
     <div class="wrap">
-      MangaBox 免费提供。随安装包附带的放大模型 <a href="https://github.com/the-database/MangaJaNai">MangaJaNai / IllustrationJaNai</a>（the-database）采用 CC BY-NC 4.0，仅限非商业使用。
+      ACGBox 次元匣免费提供。随安装包附带的放大模型 <a href="https://github.com/the-database/MangaJaNai">MangaJaNai / IllustrationJaNai</a>（the-database）采用 CC BY-NC 4.0，仅限非商业使用。
       · <a href="https://github.com/x956606865/mangabox">GitHub</a> · <a href="privacy.html">隐私政策</a> · <a href="terms.html">服务条款</a>
     </div>
   </footer>
@@ -226,11 +265,12 @@
       .then((r) => (r.ok ? r.json() : Promise.reject()))
       .then((release) => {
         const find = (suffix) => release.assets.find((a) => a.name.endsWith(suffix));
-        const mac = find("-macos-arm64.dmg"), win = find("-windows-x64.zip");
+        const mac = find("-macos-arm64.dmg"), win = find("-windows-x64.zip"), android = find("-android.apk");
         const mb = (a) => `${Math.round(a.size / 1e6)} MB`;
         const version = release.tag_name.replace(/^v/, "");
         if (mac) { document.getElementById("dl-mac").href = mac.browser_download_url; document.getElementById("dl-mac").textContent = `下载 .dmg（${mb(mac)}）`; }
         if (win) { document.getElementById("dl-win").href = win.browser_download_url; document.getElementById("dl-win").textContent = `下载 .zip（${mb(win)}）`; }
+        if (android) { document.getElementById("dl-android").href = android.browser_download_url; document.getElementById("dl-android").textContent = `下载 .apk（${mb(android)}）`; }
         const main = document.getElementById("main-download");
         if (isMac && mac) { main.href = mac.browser_download_url; main.textContent = "下载 macOS 版"; }
         else if (isWin && win) { main.href = win.browser_download_url; main.textContent = "下载 Windows 版"; }
